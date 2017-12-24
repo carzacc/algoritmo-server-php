@@ -114,7 +114,7 @@ function partita($squadra1, $squadra2, $goal1, $goal2) {
   }
 }
 function partite($giornata)	{
-  foreach($squadre as $squadra) {
+  foreach($GLOBALS['squadre'] as $squadra) {
     $squadra->azzeraPunti();
     $squadra->azzeraPuntiTrad();
     $squadra->resettaGol();
