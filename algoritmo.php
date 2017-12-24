@@ -82,10 +82,10 @@ class Squadra	{
 	}
 }
 $inter = new Squadra("Inter");
-$juve = new Squadra("Juve");
+$juve = new Squadra("juventus");
 $napoli = new Squadra("Napoli");
 $milan = new Squadra("Milan");
-$lazio = new Squadra("Lazio")
+$lazio = new Squadra("Lazio");
 $benevento = new Squadra("Benevento");
 $sampdoria = new Squadra("Sampdoria");
 $roma = new Squadra("Roma");
@@ -104,8 +104,7 @@ $bologna = new Squadra("Bologna");
 $squadre = array($benevento, $inter,$juve,$napoli,$milan,$lazio,$sampdoria,$roma,$hellas,$torino,$atalanta,$spal,$crotone,$chievo,$fiorentina,$udinese,$genoa,$sassuolo,$cagliari,$bologna);
 
 function partita($squadra1, $squadra2, $goal1, $goal2) {
-  for ($i = 0 ; $i < 20 ; $i=$i+1) {
-  	$corrente = $squadre[$i];
+  foreach($GLOBALS['squadre'] as $corrente) {
     if($corrente->getNome() == $squadra1)	{
     	$corrente->aggiungipartita($goal1,$goal2);
     }
@@ -115,8 +114,7 @@ function partita($squadra1, $squadra2, $goal1, $goal2) {
   }
 }
 function partite($giornata)	{
-  for($i = 0 ; $i < 20 ; $i=$i+1) {
-    $squadra = $squadre[$i];
+  foreach($squadre as $squadra) {
     $squadra->azzeraPunti();
     $squadra->azzeraPuntiTrad();
     $squadra->resettaGol();
@@ -200,7 +198,7 @@ function partite($giornata)	{
   partita("Torino", "Sampdoria", 2, 2);
   partita("Chievo", "Atalanta", 1, 1);
   partita("Genoa", "Lazio", 2, 3);
-  if (!soloquarta) {
+  if (!$soloquarta) {
     partita("Bologna", "Inter", 1, 1);
     partita("Benevento", "Roma", 0, 4);
     partita("Atalanta", "Crotone", 5, 1);
@@ -211,7 +209,7 @@ function partite($giornata)	{
     partita("Milan", "Spal", 2, 0);
     partita("Udinese", "Torino", 2, 3);
     partita("Verona", "Sampdoria", 0, 0);
-    if (!finoquinta) {
+    if (!$finoquinta) {
       partita("Roma", "Udinese", 3, 1);
       partita("Spal", "Napoli", 2, 3);
       partita("juventus", "Torino", 4, 0);
@@ -223,7 +221,7 @@ function partite($giornata)	{
       partita("Sassuolo", "Bologna", 0, 1);
       partita("Fiorentina", "Atalanta", 1, 1);
     }
-    if(!finosesta)
+    if(!$finosesta)
     {
       partita("Udinese","Sampdoria",4,0);
       partita("Genoa","Bologna",0,1);
@@ -236,7 +234,7 @@ function partite($giornata)	{
       partita("Milan","Roma",0,2);
       partita("Atalanta","juventus",2,2);
     }
-    if(!finosettima)
+    if(!$finosettima)
     {
       partita("juventus","Lazio",1,2);
       partita("Roma","Napoli",0,1);
@@ -248,7 +246,7 @@ function partite($giornata)	{
       partita("Sassuolo","Chievo",0,0);
       partita("Inter","Milan",3,2);
       partita("Verona", "Benevento",1,0);
-      if(!finottava)
+      if(!$finottava)
       {
         partita("Sampdoria","Crotone",5,0);
         partita("Napoli","Inter",0,0);
@@ -260,7 +258,7 @@ function partite($giornata)	{
         partita("Torino","Roma",0,1);
         partita("Udinese","juventus",2,6);
         partita("Lazio","Cagliari",3,0);
-        if(!finonona)
+        if(!$finonona)
         {
           partita("Inter","Sampdoria",3,2);
           partita("Atalanta","Verona",3,0);
@@ -272,7 +270,7 @@ function partite($giornata)	{
           partita("juventus","Spal",4,1);
           partita("Roma","Crotone",1,0);
           partita("Sassuolo","Udinese",0,1);
-          if(!finodecima) {
+          if(!$finodecima) {
             partita("Milan","juventus",0,2);
             partita("Roma","Bologna",1,0);
             partita("Benevento","Lazio",1,5);
@@ -284,7 +282,7 @@ function partite($giornata)	{
             partita("Torino","Cagliari",2,1);
             partita("Verona","Inter",1,2);
           }
-          if(!finoundicesima) {
+          if(!$finoundicesima) {
             partita("Bologna","Crotone",2,3);
             partita("Genoa","Sampdoria",0,2);
             partita("Inter","Torino",1,1);
@@ -295,7 +293,7 @@ function partite($giornata)	{
             partita("Atalanta","Spal",1,1);
             partita("Sassuolo","Milan",0,2);
           }
-          if(!finododicesima) {
+          if(!$finododicesima) {
             partita("Roma","Lazio",2,1);
             partita("Napoli","Milan",2,1);
             partita("Crotone","Genoa",0,1);
@@ -307,7 +305,7 @@ function partite($giornata)	{
             partita("Inter","Atalanta",2,0);
             partita("Verona","Bologna",2,3);
           }
-          if(!finotredicesima)  {
+          if(!$finotredicesima)  {
             partita("Bologna","Sampdoria",3,0);
             partita("Sassuolo","Verona",0,2);
             partita("Chievo","Spal",2,1);
@@ -319,9 +317,9 @@ function partite($giornata)	{
             partita("juventus","Crotone",3,0);
             partita("Atalanta","Benevento",1,0);
           }
-          if(!finoquattordicesima)  {
+          if(!$finoquattordicesima)  {
             partita("Roma","Spal",3,1);
-            partita("Napoli","juventus",0,1)
+            partita("Napoli","juventus",0,1);
             partita("Torino","Atalanta",1,1);
             partita("Benevento","Milan",2,2);
             partita("Bologna","Cagliari",1,1);
@@ -337,5 +335,4 @@ function partite($giornata)	{
   }
 }
 
-echo $inter->getNome();
 ?>
