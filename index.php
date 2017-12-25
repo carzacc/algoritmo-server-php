@@ -3,14 +3,17 @@ include 'algoritmo.php';
 header('Content-Type: application/json');
 $g = ($_GET['g'] ?: 15);
 partite($g);
+sortSquadre($GLOBALS['squadre']);
 $arrsquadre = [];
-foreach ($squadre as $squadra)	{
+$i=0;
+/*foreach ($squadre as $squadra)	{
 	$o->Squadra = $squadra->getNome();
 	$o->Alternativa = $squadra->getPunti();
 	$o->Tradizionale = $squadra->getPuntiTrad();
 	$o->Somma = $squadra->getPunti()+$squadra->getPuntiTrad();
-	array_push($arrsquadre, $o);
-}
-$out = json_encode($arrsquadre);
+	$arrsquadre[$i] = $o;
+	$i++;
+}*/
+$out = json_encode($squadre);
 print $out."\n";
 ?>

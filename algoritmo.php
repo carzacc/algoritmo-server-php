@@ -80,6 +80,10 @@ class Squadra	{
 	    $this->pareggi = 0;
 	    $this->sconfitte = 0;
 	}
+  function arrotonda () {
+    $this->puntiTrad=round($this->puntiTrad, 0);
+    $this->punti=round($this->punti,1);
+  }
 }
 $inter = new Squadra("Inter");
 $juve = new Squadra("juventus");
@@ -332,6 +336,19 @@ function partite($giornata)	{
         }
       }
     }
+  }
+}
+
+function sortSquadre (&$squadre) {
+  for ($i=0;$i<20;$i++) {
+    for ($c=1;$c<20;$c++)  {
+      if($squadre[$c]->getPuntiTrad()>$squadre[$c-1]->getPuntiTrad()) {
+        $temp = $squadre[$c];
+        $squadre[$c] = $squadre[$c-1];
+        $squadre[$c-1] = $temp;
+      }
+    }
+    $squadre[$i]->arrotonda();
   }
 }
 
