@@ -1,7 +1,7 @@
  <?php
 header("Access-Control-Allow-Origin: *")
-include 'algoritmo.php';
 header('Content-Type: application/json');
+include 'algoritmo.php';
 $g = ($_GET['g'] ?: 15);
 partite($g);
 sortSquadre($GLOBALS['squadre']);
