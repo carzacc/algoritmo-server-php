@@ -1,4 +1,5 @@
  <?php
+header("Access-Control-Allow-Origin: *")
 include 'algoritmo.php';
 header('Content-Type: application/json');
 $g = ($_GET['g'] ?: 15);
